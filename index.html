@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Logarithm and Anti-Logarithm Calculator</title>
+    <style>
+  
+        body {
+            font-family: 'Oswald';
+            background: linear-gradient(120deg, yellow, #16F529);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: white;
+        }
+
+        .calculator-container {
+            background-color: #2c3e50;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        input[type="number"] {
+            padding: 10px;
+            width: calc(100% - 22px);
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 5px;
+        }
+            div {
+              color: white;
+            }
+        button {
+            padding: 10px 20px;
+            margin: 10px 5px;
+            background-color: #2980b9;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #3498db;
+        }
+
+        .output {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+
+        /* Copyright section */
+        .copyright {
+            font-family: 'Arial';
+            background-color: #2c3e50;
+            text-align: center;
+            margin-top: 25%;
+            font-size: .70em;
+            color:white ;
+        }
+        p {
+          color: white;
+          font-family: 'Oswald';
+          
+        }
+    </style>
+</head>
+<body>
+<h1>Logarithm & Antilogarithm</h1>
+<p>/////////////////////////////////////////////</p>
+
+
+<div class="calculator-container">
+    <h1>Calculat Log & Antilog</h1>
+    
+    <label for="logInput">Enter Value:</label><br>
+    <input type="number" id="logInput" placeholder="Enter number"><br>
+
+    <label for="baseInput">Enter Base (Default is 10):</label><br>
+    <input type="number" id="baseInput" placeholder="Enter base"><br>
+    
+    <button onclick="calculateLog()">Calculate Log</button>
+    <button onclick="calculateAntiLog()">Calculate Anti-Log</button>
+    
+    <div class="output" id="result"></div>
+</div>
+<!-- Copyright Notice -->
+<div class="copyright"># Created by SAKIL AHMED/ a student of Bechimari Jatiya Viddyalaya
+</div>
+
+<script>
+    // Created by SAKIL AHMED
+
+    function calculateLog() {
+        const input = document.getElementById('logInput').value;
+        let base = document.getElementById('baseInput').value;
+
+        if (!base) {
+            base = 10; // default base to 10 if none provided
+        }
+        
+        if (input && base > 0) {
+            const logValue = Math.log(input) / Math.log(base);
+            document.getElementById('result').innerHTML = `Log<sub>${base}</sub>(${input}) = ${logValue.toFixed(5)}`;
+        } else {
+            document.getElementById('result').innerHTML = "Please enter a valid number and base.";
+        }
+    }
+
+    function calculateAntiLog() {
+        const input = document.getElementById('logInput').value;
+        let base = document.getElementById('baseInput').value;
+
+        if (!base) {
+            base = 10; // default base to 10 if none provided
+        }
+        
+        if (input && base > 0) {
+            const antiLogValue = Math.pow(base, input);
+            document.getElementById('result').innerHTML = `Anti-Log<sub>${base}</sub>(${input}) = ${antiLogValue.toFixed(5)}`;
+        } else {
+            document.getElementById('result').innerHTML = "Please enter a valid number and base.";
+        }
+    }
+
+    // Set the current year for the copyright dynamically
+    document.getElementById("currentYear").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
